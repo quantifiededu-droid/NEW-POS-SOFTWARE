@@ -63,3 +63,14 @@ export interface SyncQueueItem {
   data: any;
   created_at: number;
 }
+
+export interface Expense {
+  id: string;
+  business_id: string;
+  user_id: string;
+  category: string;
+  amount: number;
+  description?: string;
+  date: string;
+  created_at?: string;
+}

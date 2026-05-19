@@ -60,6 +60,17 @@ export const useSyncEngine = () => {
       if (serverProducts) {
         await db.products.bulkPut(serverProducts);
       }
+
+      const { data: serverExpenses, error: expensesError } = await supabase
+        .from('expenses')
+        .select('*')
+        .eq('business_id', profile.business_id);
+
+      if (expensesError) throw expensesError;
+
+      if (serverExpenses) {
+        await db.expenses.bulkPut(serverExpenses);
+      }
     };
 
     const sync = async () => {

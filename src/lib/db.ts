@@ -1,5 +1,5 @@
 import Dexie, { type Table } from 'dexie';
-import { Product, Sale, SaleItem, Category, SyncQueueItem } from '../types';
+import { Product, Sale, SaleItem, Category, SyncQueueItem, Expense } from '../types';
 
 export class ClemtrixDB extends Dexie {
   products!: Table<Product>;
@@ -7,6 +7,7 @@ export class ClemtrixDB extends Dexie {
   saleItems!: Table<SaleItem>;
   categories!: Table<Category>;
   syncQueue!: Table<SyncQueueItem>;
+  expenses!: Table<Expense>;
 
   constructor() {
     super('ClemtrixDB');
@@ -15,7 +16,8 @@ export class ClemtrixDB extends Dexie {
       sales: 'id, business_id, user_id, created_at, synced',
       saleItems: 'id, sale_id, product_id',
       categories: 'id, business_id, name',
-      syncQueue: '++id, type, created_at'
+      syncQueue: '++id, type, created_at',
+      expenses: 'id, business_id, user_id, category, date'
     });
   }
 }

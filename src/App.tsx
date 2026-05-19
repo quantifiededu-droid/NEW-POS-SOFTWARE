@@ -14,7 +14,8 @@ import {
   CreditCard,
   MessageSquare,
   RefreshCw,
-  MessageCircle
+  MessageCircle,
+  Receipt
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { clsx, type ClassValue } from 'clsx';
@@ -31,6 +32,8 @@ import { useAuth } from './hooks/useAuth';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Landing from './pages/Landing';
+import Expenses from './pages/Expenses';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -114,6 +117,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             label="Inventory" 
             href="/inventory" 
             active={location.pathname === '/inventory'} 
+          />
+          <SidebarItem 
+            icon={Receipt} 
+            label="Expenses" 
+            href="/expenses" 
+            active={location.pathname === '/expenses'} 
           />
           <SidebarItem 
             icon={MessageSquare} 
@@ -208,7 +217,7 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/*" element={
           <ProtectedRoute>
             <Layout>
@@ -216,6 +225,7 @@ export default function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/pos" element={<POS />} />
                 <Route path="/inventory" element={<Inventory />} />
+                <Route path="/expenses" element={<Expenses />} />
                 <Route path="/staff" element={<Staff />} />
                 <Route path="/ai" element={<AIAssistant />} />
               </Routes>
