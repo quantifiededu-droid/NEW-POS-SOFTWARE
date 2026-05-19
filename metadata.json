@@ -1,0 +1,6 @@
+{
+  "name": "CLEMTRIX POS",
+  "description": "Production-ready Point of Sale system with offline synchronization, inventory management, and AI business insights for Ghanaian businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
